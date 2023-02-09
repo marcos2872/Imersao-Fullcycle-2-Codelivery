@@ -7,4 +7,4 @@ services:
     volumes:
       - .:/go/src/
     extra_hosts:
-      - "host.docker.internal:172.17.0.1"
+     - "host.docker.intrenal:127.17.0.1"

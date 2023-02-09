@@ -6,4 +6,6 @@ ENV PATH="/go/bin:${PATH}"
 RUN apt-get update && \
     apt-get install build-essential librdkafka-dev -y
 
-CMD ["tail", "-f", "/dev/null"]
+COPY . .
+RUN GOOS=linux go build -ldflags="-s -w" -o simulator
+ENTRYPOINT ["./simulator"]

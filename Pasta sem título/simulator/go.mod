@@ -1,6 +1,6 @@
-module github.com/codeedu/imersaofsfc2-simulator
+module github.com/codmarcos/imersaofsfc2-simulator
 
-go 1.16
+go 1.20
 
 require (
 	github.com/confluentinc/confluent-kafka-go v1.6.1
