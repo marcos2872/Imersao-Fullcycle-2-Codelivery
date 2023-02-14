@@ -8,3 +8,8 @@ services:
       - .:/go/src/
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    networks:
+      - codelivery
+networks:
+  codelivery:
+    name: codelivery

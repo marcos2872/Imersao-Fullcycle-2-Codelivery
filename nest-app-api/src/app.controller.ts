@@ -1,7 +1,7 @@
 import { Controller, Get } from '@nestjs/common';
 import { AppService } from './app.service';
 
-@Controller()
+@Controller('/prefixo')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -10,3 +10,5 @@ export class AppController {
     return this.appService.getHello();
   }
 }
+
+//HTTP - Get, Post, Put, Patch, Delete e

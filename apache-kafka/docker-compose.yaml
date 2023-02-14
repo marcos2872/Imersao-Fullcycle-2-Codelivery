@@ -8,6 +8,8 @@ services:
       ZOOKEEPER_CLIENT_PORT: 2181
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    networks:
+      - codelivery
 
   kafka:
     image: confluentinc/cp-kafka:latest
@@ -26,6 +28,8 @@ services:
       KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: INTERNAL:PLAINTEXT,OUTSIDE:PLAINTEXT
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    networks:
+      - codelivery
 
   kafka-topics-generator:
     image: confluentinc/cp-kafka:latest
@@ -36,6 +40,8 @@ services:
         "sleep 5s &&
         kafka-topics --create --topic=route.new-direction --if-not-exists --bootstrap-server=kafka:9092 &&
         kafka-topics --create --topic=route.new-position --if-not-exists --bootstrap-server=kafka:9092"
+    networks:
+      - codelivery
 
   control-center:
     image: confluentinc/cp-enterprise-control-center:6.0.1
@@ -51,6 +57,8 @@ services:
       PORT: 9021
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    networks:
+      - codelivery
 
   kafka-connect:
     image: confluentinc/cp-kafka-connect-base:6.0.0
@@ -102,6 +110,8 @@ services:
         sleep infinity
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    networks:
+      - codelivery
 
   es01:
     image: docker.elastic.co/elasticsearch/elasticsearch:7.11.2
@@ -122,6 +132,8 @@ services:
       - 9200:9200
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    networks:
+      - codelivery
 
   kibana:
     image: docker.elastic.co/kibana/kibana:7.11.2
@@ -133,3 +145,9 @@ services:
       ELASTICSEARCH_HOSTS: '["http://es01:9200"]'
     extra_hosts:
       - "host.docker.internal:172.17.0.1"
+    networks:
+      - codelivery
+
+networks:
+  codelivery:
+    name: codelivery

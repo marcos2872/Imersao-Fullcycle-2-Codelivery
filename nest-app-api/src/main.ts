@@ -11,6 +11,12 @@ async function bootstrap() {
       client: {
         clientId: process.env.KAFKA_CLIENT_ID,
         brokers: [process.env.KAFKA_BROKER],
+        // ssl: true,
+        // sasl: {
+        //   mechanism: 'plain', // scram-sha-256 or scram-sha-512
+        //   username: process.env.KAFKA_SASL_USERNAME,
+        //   password: process.env.KAFKA_SASL_PASSWORD,
+        // },
       },
       consumer: {
         groupId:
@@ -22,7 +28,7 @@ async function bootstrap() {
     },
   });
 
-  await app.startAllMicroservices();
+  await app.startAllMicroservicesAsync();
   await app.listen(3000);
 }
 bootstrap();
