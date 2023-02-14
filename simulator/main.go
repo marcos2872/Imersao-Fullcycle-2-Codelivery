@@ -1,7 +1,7 @@
 package main
 
 import (
-	"fmt"
+	// "fmt"
 	kafka2 "github.com/codeedu/imersaofsfc2-simulator/application/kafka"
 	"github.com/codeedu/imersaofsfc2-simulator/infra/kafka"
 	ckafka "github.com/confluentinc/confluent-kafka-go/kafka"
@@ -21,7 +21,7 @@ func main() {
 	consumer := kafka.NewKafkaConsumer(msgChan)
 	go consumer.Consume()
 	for msg := range msgChan {
-		fmt.Println(string(msg.Value))
+		// fmt.Println(string(msg.Value))
 		go kafka2.Produce(msg)
 	}
 }

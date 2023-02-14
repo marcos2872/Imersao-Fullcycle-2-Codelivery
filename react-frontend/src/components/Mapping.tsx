@@ -17,7 +17,7 @@ import { useSnackbar } from "notistack";
 import { Navbar } from "./Navbar";
 import io from "socket.io-client";
 
-const API_URL = process.env.REACT_APP_API_URL as string;
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3000' as string;
 
 const googleMapsLoader = new Loader(process.env.REACT_APP_GOOGLE_API_KEY);
 

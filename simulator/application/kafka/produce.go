@@ -8,6 +8,7 @@ import (
 	"log"
 	"os"
 	"time"
+	"fmt"
 )
 
 // Produce is responsible to publish the positions of each request
@@ -26,6 +27,7 @@ func Produce(msg *ckafka.Message) {
 	}
 	for _, p := range positions {
 		kafka.Publish(p, os.Getenv("KafkaProduceTopic"), producer)
-		time.Sleep(time.Millisecond * 500)
+		fmt.Println(producer, p)
+		time.Sleep(time.Millisecond * 300)
 	}
 }
