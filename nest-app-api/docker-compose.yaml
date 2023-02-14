@@ -13,8 +13,6 @@ services:
       - "host.docker.internal:172.17.0.1"
     depends_on:
       - db
-    networks:
-      - codelivery
   
   db:
     image: mongo:4.4.4
@@ -26,8 +24,6 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=root
       - MONGO_INITDB_DATABASE=nest
-    networks:
-      - codelivery
   
   mongo-express:
     image: mongo-express
@@ -42,8 +38,3 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=root
     depends_on:
       - db
-    networks:
-      - codelivery
-networks:
-  codelivery:
-    name: codelivery
